@@ -1,18 +1,11 @@
 package springapppackGroupID;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class TestSpring {
+    static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+    static Computer computer = context.getBean("computer", Computer.class);
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml"
-        );
-        Music music =  context.getBean("musicBean", Music.class);
-
-        MusicPlayer musicPlayer = new MusicPlayer(music);
-        musicPlayer.playMusic();
-        context.close();
-
-
+        System.out.println(computer);
     }
 }
